@@ -4,6 +4,11 @@ set nocompatible
 " Schemat kolorów - osobno dla GUI i konsoli
 if has("gui_running")
 	colorscheme evening
+
+    if exists('+colorcolumn')
+        set colorcolumn=72
+    endif
+"    set gfn=Terminus\ 14
 else
 	colorscheme desert
 endif
@@ -23,7 +28,7 @@ set ai
 set smartindent
 
 " Wcięcia w stylu C - nie tylko dla C
-au FileType c,cpp,cs,java,javascript,php set cin
+au FileType c,cpp,cs,java,javascript,php,perl set cin
 
 " Ustaw szerokość tabulacji na 4 spacje
 set tabstop=4
@@ -62,7 +67,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let Grep_Skip_Dirs='RCS CVS SCCS .svn .git'
 
 " Więcej skrótów klawiaturowych
-nnoremap <silent> <F8> :TlistToggle
+nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F3> :Bgrep
 nnoremap <silent> <S-F3> :Grep 
 
@@ -70,3 +75,16 @@ nnoremap <silent> <S-F3> :Grep
 let g:html_use_css="1"
 
 set tabpagemax=24
+
+hi ColorColumn guibg=#2f2f2f
+
+set wildmenu        " Use wildmenu
+set wildmode=list:longest    
+
+autocmd FileType javascript,lisp,scheme,perl,python,ruby,vim setlocal formatoptions-=cro
+
+" Konfiguracja dla poszczególnych hostów
+if hostname() == "ps5104"
+	set expandtab
+endif
+
