@@ -1,0 +1,57 @@
+#!/bin/bash
+
+DOTFILES=`pwd`
+
+install() {
+    ln -s "$1" "$2"
+}
+
+cd $DOTFILES
+for f in *
+do
+    if [ $f = 'setup' ]; then
+        continue
+    fi
+
+    DOT="$HOME/.$f"
+    FILE="$DOTFILES/$f"
+
+    # Check if dotfile is present at all
+    if [ ! -f "$DOT" ]; then
+        echo "$f missing"
+        install $FILE $DOT
+        continue
+    fi
+
+    # Check if it is a symlink
+    DEST=`readlink -f $DOT`
+    if [  "$?" = "0"  -a  "$DEST" = "$FILE"  ]; then
+        echo "$f already synchronized"
+        continue
+    fi;
+
+    # This far we know that file is present and
+    # is not a symlink
+
+    # Check whether it differs
+    diff -q "$DOT" "$FILE" > /dev/null
+    if [ "$?" = "0" ]; then
+        echo "$f is the same"
+        rm "$DOT"
+        install $FILE $DOT
+        continue
+    fi
+
+    # Check whether we can back up original config file
+    # and symlink it after
+    if [ ! -f "$DOT~" ]; then
+        echo "$f already exists, backing it up";
+        mv "$DOT" "$DOT~"
+        install $FILE $DOT
+        continue;
+    fi
+
+    echo "Cannot install $f" >&2
+
+done
+
