@@ -83,6 +83,9 @@ set wildmode=list:longest
 
 autocmd FileType javascript,lisp,scheme,perl,python,ruby,vim setlocal formatoptions-=cro
 
+" Hide those ugly ^M
+match Ignore /\r$/
+
 " Konfiguracja dla poszczególnych hostów
 if hostname() == "ps5104"
 	set expandtab
