@@ -1,3 +1,6 @@
+" Enable plugins via pathogen
+execute pathogen#infect()
+
 " Wyłącza kompatybilność z vi
 set nocompatible
 
@@ -67,7 +70,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let Grep_Skip_Dirs='RCS CVS SCCS .svn .git'
 
 " Więcej skrótów klawiaturowych
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F7> :NERDTreeToggle<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
 nnoremap <silent> <F3> :Bgrep
 nnoremap <silent> <S-F3> :Grep 
 
