@@ -6,12 +6,12 @@ set nocompatible
 
 " Schemat kolorów - osobno dla GUI i konsoli
 if has("gui_running")
-	colorscheme evening
+	colorscheme gruvbox
 
     if exists('+colorcolumn')
         set colorcolumn=72
     endif
-"    set gfn=Terminus\ 14
+    set gfn=Monospace\ 9
 else
 	colorscheme desert
 endif
@@ -83,7 +83,7 @@ set tabpagemax=24
 hi ColorColumn guibg=#2f2f2f
 
 set wildmenu        " Use wildmenu
-set wildmode=list:longest    
+set wildmode=longest:list:full
 
 autocmd FileType javascript,lisp,scheme,perl,python,ruby,vim setlocal formatoptions-=cro
 
@@ -95,3 +95,12 @@ if hostname() == "ps5104"
 	set expandtab
 endif
 
+set cursorline
+
+set background=dark
+
+let g:rainbow_active = 1
+let g:rainbow_operators = 1
+
+set splitright
+set splitbelow
