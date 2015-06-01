@@ -13,8 +13,14 @@ if has("gui_running")
     endif
     set gfn=Monospace\ 9
 else
-	colorscheme desert
+	colorscheme gruvbox
+"	colorscheme desert
 endif
+
+" Enable mouse
+set mouse=a
+"set ttyfast " May be required
+set ttymouse=xterm2
 
 " Domyślnie włącz podświetlanie składni
 syntax on
@@ -53,7 +59,7 @@ map <down> gj
 imap <down> <C-o>gj
 
 " Włącz sprawdzanie pisowni i ustaw język na polski
-set spell
+"set spell
 set spelllang=pl,en
 
 " Włącz menu kontekstowe
