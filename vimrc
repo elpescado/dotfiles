@@ -18,7 +18,7 @@ else
 endif
 
 " Enable mouse
-set mouse=a
+set mouse=nv
 "set ttyfast " May be required
 set ttymouse=xterm2
 
