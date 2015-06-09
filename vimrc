@@ -110,3 +110,6 @@ let g:rainbow_operators = 1
 
 set splitright
 set splitbelow
+
+" Ignore files in NERDTree
+let NERDTreeIgnore = ['\.pyc$']
