@@ -4,18 +4,42 @@ execute pathogen#infect()
 " Wyłącza kompatybilność z vi
 set nocompatible
 
-" Schemat kolorów - osobno dla GUI i konsoli
-if has("gui_running")
-	colorscheme gruvbox
+" Colorscheme
+if &t_Co >= 256 || has("gui_running")
+	" Try gruvbox, fall back to evening
+	try
+		colorscheme gruvbox
+	catch
+		colorscheme evening
+	endtry
 
     if exists('+colorcolumn')
         set colorcolumn=72
     endif
-    set gfn=Monospace\ 9
 else
-	colorscheme gruvbox
-"	colorscheme desert
+	" Colorschemes for 16 color terminal, those are least ugly
+	colorscheme slate
+"	colorscheme torte
 endif
+
+" system dependent settings: fonts etc
+if has("win32")
+	set gfn=Consolas:h10:cANSI
+	set backspace=indent,eol,start
+	let $LANG = 'en'
+	set langmenu=none
+
+	if has("multi_byte")
+		if &termencoding == ""
+			let &termencoding = &encoding
+		endif
+		set encoding=utf-8                     " better default than latin1
+		setglobal fileencoding=utf-8           " change default file encoding when writing new files
+	endif
+else
+    set gfn=Monospace\ 9
+endif
+
 
 " Enable mouse
 set mouse=nv
@@ -42,7 +66,7 @@ au FileType c,cpp,cs,java,javascript,php,perl set cin
 " Ustaw szerokość tabulacji na 4 spacje
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+"set noexpandtab
 
 " Ustawienia zawijania tekstu
 set nowrap            " Wyłącz zawijanie
