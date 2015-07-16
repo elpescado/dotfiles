@@ -1,9 +1,9 @@
 # wizualny alarm
-vbell on
+vbell off
 # zamiana ctrl-A na ctrl-O
 #escape ^Oo
 # duży bufor przewijania
 defscrollback 15000
 # pasek statusu w ostatniej linijce
-caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+caption always "%{= yk} %-w%{= kw} %n %t %{= yk}%+w %-= @%H - %LD %d %LM - %c"
 
