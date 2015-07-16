@@ -5,7 +5,7 @@ vbell off
 # duży bufor przewijania
 defscrollback 15000
 # pasek statusu w ostatniej linijce
-caption always "%{= yk} %-w%{= kw} %n %t %{= yk}%+w %-= @%H - %LD %d %LM - %c"
+caption always "%{= yk} %-w%{= kw} %n %t %{= yk}%+w %-= @%H - %LD %d %LM - %c "
 
 term "screen-256color"
 
