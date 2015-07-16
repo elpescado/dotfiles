@@ -24,7 +24,7 @@ do
     fi
 
     # Check if it is a symlink
-    DEST=`readlink -f $DOT`
+    DEST=`readlink -n $DOT`
     if [  "$?" = "0"  -a  "$DEST" = "$FILE"  ]; then
         echo "$f already synchronized"
         continue

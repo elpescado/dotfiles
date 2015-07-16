@@ -24,3 +24,6 @@
     lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset %C(green)(%ci) %C(blue)%an%Creset: %s'
 
     at = !git push origin +HEAD:bamboo/at
+[user]
+	name = Przemysław Sitek
+	email = przemyslaw.sitek@gmail.com
