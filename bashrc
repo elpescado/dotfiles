@@ -37,4 +37,4 @@ export EDITOR=vim
 
 # Misc
 export DIFF_TOOL=diff
-alias ls="ls --color"
+ls --color=auto &> /dev/null && alias ls='ls --color=auto'
