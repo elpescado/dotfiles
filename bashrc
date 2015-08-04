@@ -38,3 +38,6 @@ export EDITOR=vim
 # Misc
 export DIFF_TOOL=diff
 ls --color=auto &> /dev/null && alias ls='ls --color=auto'
+
+# Alias ack-grep if ack is not found
+type ack >/dev/null 2>/dev/null || alias ack=ack-grep
