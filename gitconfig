@@ -7,20 +7,11 @@
 [push]
 	default = tracking
 [alias]
-    bamboo = push origin +HEAD:bamboo/tod
-
     st = status
     di = diff --ignore-space-change
     co = checkout
     me = merge
     fh = fetch
 
-    tbm = !git push origin +HEAD:bamboo/tod-bm
-    tod = !git push origin +HEAD:bamboo/tod
-    tod-status = !bamboo-status -k SEM-TODBM
-    bamboo = push origin +HEAD:bamboo/tod
-    bambm = push origin +HEAD:bamboo/tod-bm
-    publish = push --set-upstream origin
     lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset %C(green)(%ci) %C(blue)%an%Creset: %s'
 
-    at = !git push origin +HEAD:bamboo/at
