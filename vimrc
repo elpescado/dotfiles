@@ -135,5 +135,6 @@ let g:rainbow_operators = 1
 set splitright
 set splitbelow
 
-" Ignore files in NERDTree
+" Ignore files in NERDTree and CtrlP
 let NERDTreeIgnore = ['\.pyc$']
+let g:ctrlp_custom_ignore = 'pyc$'
