@@ -136,5 +136,6 @@ set splitright
 set splitbelow
 
 " Ignore files in NERDTree and CtrlP
+set wildignore+=*.pyc
 let NERDTreeIgnore = ['\.pyc$']
 let g:ctrlp_custom_ignore = 'pyc$'
