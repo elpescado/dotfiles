@@ -1,8 +1,23 @@
-" Enable plugins via pathogen
-execute pathogen#infect()
-
 " Wyłącza kompatybilność z vi
 set nocompatible
+" Enable plugins via pathogen
+
+"execute pathogen#infect()
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'Shougo/unite.vim'
+"Plugin 'bling/vim-airline/'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+call vundle#end()
+filetype plugin indent on
 
 " Colorscheme
 if &t_Co >= 256 || has("gui_running")
