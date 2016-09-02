@@ -10,7 +10,18 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
-export PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] $(__git_ps1)\n \[\e[1;32m\]\$\[\e[m\] '
+# Color prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+print_right_aligned_time()
+{
+    printf "%*s" $COLUMNS $(date "+%T")
+}
+GREY='\[\e[1;30m\]'
+GREEN='\[\e[32m\]'
+BLUE='\[\e[1;34m\]'
+RESET='\[\e[m\]'
+RIGHT_ALIGNED_TIME='\[$(tput sc; print_right_aligned_time; tput rc)\]'
+export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
 
 function coffee_error_handler () {
     if [ `date "+%H"` -lt 10 ]
