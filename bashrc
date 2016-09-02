@@ -36,15 +36,6 @@ prompt_cmd()
 PROMPT_COMMAND=prompt_cmd
 export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
 
-function coffee_error_handler () {
-    if [ `date "+%H"` -lt 10 ]
-    then
-        echo "Command failed... Did you drink coffee today?"
-    fi
-}
-
-trap coffee_error_handler ERR
-
 
 # SECTION: Aliases && functions
 
