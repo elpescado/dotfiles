@@ -28,13 +28,13 @@ prompt_cmd()
 {
     if [[ $? != 0 ]]
     then
-        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${RED}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${RED}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
     else
-        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
     fi
 }
 PROMPT_COMMAND=prompt_cmd
-export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
 
 
 # SECTION: Aliases && functions
