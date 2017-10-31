@@ -10,16 +10,31 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
-export PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] $(__git_ps1)\n \[\e[1;32m\]\$\[\e[m\] '
+# Color prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+print_right_aligned_time()
+{
+    printf "%*s" $COLUMNS $(date "+%T")
+}
+GREY='\[\e[1;30m\]'
+RED='\[\e[31m\]'
+GREEN='\[\e[32m\]'
+BLUE='\[\e[1;34m\]'
+RESET='\[\e[m\]'
+RIGHT_ALIGNED_TIME='\[$(tput sc; print_right_aligned_time; tput rc)\]'
 
-function coffee_error_handler () {
-    if [ `date "+%H"` -lt 10 ]
+# Change color of prompt based on most recent exit code
+prompt_cmd()
+{
+    if [[ $? != 0 ]]
     then
-        echo "Command failed... Did you drink coffee today?"
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${RED}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+    else
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
     fi
 }
-
-trap coffee_error_handler ERR
+PROMPT_COMMAND=prompt_cmd
+export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
 
 
 # SECTION: Aliases && functions
@@ -40,6 +55,10 @@ export DIFF_TOOL=diff
 
 # colors
 export CLICOLOR=1
+ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 
 PERL_MB_OPT="--install_base \"/Users/przemek/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/przemek/perl5"; export PERL_MM_OPT;
+
+# Alias ack-grep if ack is not found
+type ack >/dev/null 2>/dev/null || alias ack=ack-grep
