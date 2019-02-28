@@ -9,4 +9,4 @@ caption always "%{= yk} %-w%{= kw} %n %t %{= yk}%+w %-= @%H - %LD %d %LM - %c "
 
 term "screen-256color"
 
-shell -bash
+shell bash
