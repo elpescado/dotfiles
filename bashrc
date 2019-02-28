@@ -10,6 +10,10 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
+if [ -f /etc/profile.d/bash_completion.sh ]; then
+    . /etc/profile.d/bash_completion.sh
+fi
+
 # Color prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 print_right_aligned_time()
