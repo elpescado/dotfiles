@@ -1,57 +1,80 @@
 #!/bin/bash
 
 DOTFILES=`pwd`
+VUNDLE_PATH=~/.vim/bundle/Vundle.vim
+VUNDLE_GIT=https://github.com/VundleVim/Vundle.vim.git
 
 install() {
     ln -s "$1" "$2"
 }
 
-cd $DOTFILES
-for f in *
-do
-    if [ $f = 'setup' ]; then
-        continue
+vundle_setup() {
+    if [ ! -d "$VUNDLE_PATH" ]
+    then
+        echo "Cloning vundle"
+        mkdir -p ~/.vim/bundle
+        git clone "$VUNDLE_GIT" "$VUNDLE_PATH"
+    else
+        echo "Vundle already installed"
     fi
+}
 
-    DOT="$HOME/.$f"
-    FILE="$DOTFILES/$f"
+vundle_install_plugins() {
+    vim +PluginInstall +qall
+}
 
-    # Check if dotfile is present at all
-    if [ ! -f "$DOT" ]; then
-        echo "$f missing"
-        install $FILE $DOT
-        continue
-    fi
 
-    # Check if it is a symlink
-    DEST=`readlink -n $DOT`
-    if [  "$?" = "0"  -a  "$DEST" = "$FILE"  ]; then
-        echo "$f already synchronized"
-        continue
-    fi;
+install_dotfiles() {
+    cd $DOTFILES
+    for f in *
+    do
+        if [ $f = 'setup' ]; then
+            continue
+        fi
 
-    # This far we know that file is present and
-    # is not a symlink
+        DOT="$HOME/.$f"
+        FILE="$DOTFILES/$f"
 
-    # Check whether it differs
-    diff -q "$DOT" "$FILE" > /dev/null
-    if [ "$?" = "0" ]; then
-        echo "$f is the same"
-        rm "$DOT"
-        install $FILE $DOT
-        continue
-    fi
+        # Check if dotfile is present at all
+        if [ ! -f "$DOT" ]; then
+            echo "$f missing"
+            install $FILE $DOT
+            continue
+        fi
 
-    # Check whether we can back up original config file
-    # and symlink it after
-    if [ ! -f "$DOT~" ]; then
-        echo "$f already exists, backing it up";
-        mv "$DOT" "$DOT~"
-        install $FILE $DOT
-        continue;
-    fi
+        # Check if it is a symlink
+        DEST=`readlink -n $DOT`
+        if [  "$?" = "0"  -a  "$DEST" = "$FILE"  ]; then
+            echo "$f already synchronized"
+            continue
+        fi;
 
-    echo "Cannot install $f" >&2
+        # This far we know that file is present and
+        # is not a symlink
 
-done
+        # Check whether it differs
+        diff -q "$DOT" "$FILE" > /dev/null
+        if [ "$?" = "0" ]; then
+            echo "$f is the same"
+            rm "$DOT"
+            install $FILE $DOT
+            continue
+        fi
 
+        # Check whether we can back up original config file
+        # and symlink it after
+        if [ ! -f "$DOT~" ]; then
+            echo "$f already exists, backing it up";
+            mv "$DOT" "$DOT~"
+            install $FILE $DOT
+            continue;
+        fi
+
+        echo "Cannot install $f" >&2
+
+    done
+}
+
+vundle_setup
+install_dotfiles
+vundle_install_plugins
