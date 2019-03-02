@@ -16,8 +16,19 @@ Plugin 'Shougo/unite.vim'
 "Plugin 'bling/vim-airline/'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+"Plugin 'wikitopian/hardmode'
+Plugin 'takac/vim-hardtime'
+Plugin 'mileszs/ack.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-syntastic/syntastic'
+"Plugin 'w0rp/ale'
+Plugin 'nvie/vim-flake8'
+Plugin 'maralla/completor.vim'
+Plugin 'liuchengxu/space-vim-dark'
 call vundle#end()
 filetype plugin indent on
+
+" Call :PluginInstall after adding new plugins
 
 " Colorscheme
 if &t_Co >= 256 || has("gui_running")
@@ -37,10 +48,11 @@ else
 "	colorscheme torte
 endif
 
+set backspace=indent,eol,start
+
 " system dependent settings: fonts etc
 if has("win32")
 	set gfn=Consolas:h10:cANSI
-	set backspace=indent,eol,start
 	let $LANG = 'en'
 	set langmenu=none
 
@@ -82,6 +94,7 @@ au FileType c,cpp,cs,java,javascript,php,perl set cin
 set tabstop=4
 set shiftwidth=4
 "set noexpandtab
+set expandtab
 
 " Ustawienia zawijania tekstu
 set nowrap            " Wyłącz zawijanie
@@ -115,6 +128,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let Grep_Skip_Dirs='RCS CVS SCCS .svn .git'
 
 " Więcej skrótów klawiaturowych
+nnoremap <silent> <F5> :w <bar> :!%:p<CR>
+autocmd FileType python map <buffer> <F6> :call Flake8()<CR>
 nnoremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
 nnoremap <silent> <F3> :Bgrep
@@ -137,7 +152,6 @@ match Ignore /\r$/
 
 " Konfiguracja dla poszczególnych hostów
 if hostname() == "ps5104"
-	set expandtab
 endif
 
 set cursorline
@@ -154,3 +168,19 @@ set splitbelow
 set wildignore+=*.pyc
 let NERDTreeIgnore = ['\.pyc$']
 let g:ctrlp_custom_ignore = 'pyc$'
+
+" ;-)
+"call HardMode()
+"let g:hardtime_default_on = 1
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+let g:ackprg = "/home/sitek/perl5/bin/ack"
+let g:ack_default_options = " --ignore-file=is:tags"
+
+" Foo {{{
+" bar
+" }}}
+" vim: foldmethod=marker foldlevel=0

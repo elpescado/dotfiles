@@ -10,6 +10,10 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
+if [ -f /etc/profile.d/bash_completion.sh ]; then
+    . /etc/profile.d/bash_completion.sh
+fi
+
 # Color prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 print_right_aligned_time()
@@ -28,13 +32,13 @@ prompt_cmd()
 {
     if [[ $? != 0 ]]
     then
-        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${RED}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${RED}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
     else
-        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+        export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
     fi
 }
 PROMPT_COMMAND=prompt_cmd
-export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}$(__git_ps1)\n ${GREEN}\$${RESET} "
+export PS1="${GREY}${RIGHT_ALIGNED_TIME}${RESET}${GREEN}\u${RESET} ${BLUE}\w${RESET}\$(__git_ps1)\n ${GREEN}\$${RESET} "
 
 
 # SECTION: Aliases && functions
