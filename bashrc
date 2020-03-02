@@ -66,3 +66,17 @@ PERL_MM_OPT="INSTALL_BASE=/Users/przemek/perl5"; export PERL_MM_OPT;
 
 # Alias ack-grep if ack is not found
 type ack >/dev/null 2>/dev/null || alias ack=ack-grep
+
+export PATH="$HOME/bin:$PATH"
+
+if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]; then
+    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+fi
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+if [ -f $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br ]; then
+    source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
+fi
