@@ -34,6 +34,8 @@ install_dotfiles() {
 
         if [ $f = 'config.fish' ]; then
             DOT="$HOME/.config/fish/$f"
+        elif [ $f = 'starship.toml' ]; then
+            DOT="$HOME/.config/$f"
         else
             DOT="$HOME/.$f"
         fi

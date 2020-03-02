@@ -1,0 +1,24 @@
+#prompt_order = ["user", "dir", "host", "git", "venv", "kubecontext", "jobs", "exit_code", "char"]
+
+[directory]
+style = "075"
+
+[git_branch]
+symbol = "⌥ "
+style = "069"
+
+[git_status]
+disabled = true
+
+[package]
+style = "063"
+
+[python]
+style = "057"
+
+[kubernetes]
+disabled = true
+style = "075"
+
+[java]
+disabled = true
