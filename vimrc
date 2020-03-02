@@ -23,6 +23,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'maralla/completor.vim'
 Plugin 'liuchengxu/space-vim-dark'
+Plugin 'andymass/vim-matchup'
 call vundle#end()
 filetype plugin indent on
 
