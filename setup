@@ -5,6 +5,7 @@ VUNDLE_PATH=~/.vim/bundle/Vundle.vim
 VUNDLE_GIT=https://github.com/VundleVim/Vundle.vim.git
 
 install() {
+    mkdir -p `dirname "$DOT"`
     ln -s "$1" "$2"
 }
 
