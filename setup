@@ -32,7 +32,12 @@ install_dotfiles() {
             continue
         fi
 
-        DOT="$HOME/.$f"
+        if [ $f = 'config.fish' ]; then
+            DOT="$HOME/.config/fish/$f"
+        else
+            DOT="$HOME/.$f"
+        fi
+
         FILE="$DOTFILES/$f"
 
         # Check if dotfile is present at all
