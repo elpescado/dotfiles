@@ -16,8 +16,6 @@ Plugin 'Shougo/unite.vim'
 "Plugin 'bling/vim-airline/'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'wikitopian/hardmode'
-Plugin 'takac/vim-hardtime'
 Plugin 'mileszs/ack.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-syntastic/syntastic'
@@ -169,13 +167,6 @@ set wildignore+=*.pyc
 let NERDTreeIgnore = ['\.pyc$']
 let g:ctrlp_custom_ignore = 'pyc$'
 
-" ;-)
-"call HardMode()
-"let g:hardtime_default_on = 1
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
 let g:ackprg = "/home/sitek/perl5/bin/ack"
 let g:ack_default_options = " --ignore-file=is:tags"
