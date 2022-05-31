@@ -14,6 +14,7 @@
     fh = fetch
 
     lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset %C(green)(%ci) %C(blue)%an%Creset: %s'
+    jenkins = push origin +HEAD:jenkins
 
 [user]
 	name = Przemysław Sitek
