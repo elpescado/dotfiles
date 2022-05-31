@@ -24,6 +24,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'maralla/completor.vim'
 Plugin 'liuchengxu/space-vim-dark'
 Plugin 'andymass/vim-matchup'
+Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
