@@ -80,3 +80,5 @@ fi
 if [ -f $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br ]; then
     source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
 fi
+
+export JQ_COLORS="38;5;246:38;5;196:38;5;70:38;5;214:38;5;27::"
